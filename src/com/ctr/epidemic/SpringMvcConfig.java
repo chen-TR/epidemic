@@ -1,13 +1,13 @@
 package com.ctr.epidemic;
 
+import com.ctr.epidemic.common.DateConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 
 /**
@@ -21,15 +21,28 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Controller.class))
 public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 
+    @Autowired
+    private DateConverter dateConverter;
+
     //配置视图映射器
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/").setViewName("epidemic");
     }
 
-    //配置视图解析器
+    //配置内部资源视图解析器
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.jsp("/",".jsp");
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(dateConverter);
+    }
+
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
     }
 }

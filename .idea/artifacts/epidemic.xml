@@ -10,6 +10,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="springmvc" />
           <element id="library" level="project" name="log4j" />
+          <element id="library" level="project" name="mybatis-dbcp-driver" />
         </element>
       </element>
     </root>

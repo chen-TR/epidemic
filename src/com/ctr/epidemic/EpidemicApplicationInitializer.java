@@ -6,12 +6,13 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @author 陈天润
  * @version 0.0.1
  * @since 2020/2/25 12:42
+ * 注解版配置，声明spring配置类和springMVC配置类
  */
 public class EpidemicApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         //spring的配置类
-        return new Class[0];
+        return new Class[]{SpringConfig.class};
     }
 
     @Override
