@@ -8,7 +8,7 @@ package com.ctr.epidemic.model;
  */
 public class ResultDto<T> {
     private int code;
-    private String message;
+    private String msg;
     private T data;
 
     public int getCode() {
@@ -19,13 +19,6 @@ public class ResultDto<T> {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public T getData() {
         return data;
@@ -33,5 +26,13 @@ public class ResultDto<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

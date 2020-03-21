@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -26,7 +27,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/login")
-    public String login(UserInfo userInfo, Model model){
+    public String login(UserInfo userInfo, Model model, HttpSession session){
 
         logger.debug("login() function running...");
         logger.debug(userInfo.getAccount()+", "+userInfo.getPassword());
@@ -38,6 +39,7 @@ public class UserController {
             return "login";
         }else if(user.getPassword().equals(userInfo.getPassword())){
             //登陆成功
+            session.setAttribute("loginedUser",user);
             return "redirect:/main.jsp";
         }
         //密码错误，登陆失败返回登录页

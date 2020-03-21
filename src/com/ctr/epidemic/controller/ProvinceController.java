@@ -28,7 +28,7 @@ public class ProvinceController {
     @Autowired
     private ProvinceService provinceService;
 
-    @GetMapping("/ajax/noDateList")
+    @GetMapping("/ajax/noDataList")
     @ResponseBody
     public ResultDto noDataProvinceList(String date){
 
@@ -41,7 +41,7 @@ public class ProvinceController {
             resultDto.setData(list);
         }else {
             resultDto.setCode(-1);
-            resultDto.setMessage("参数为空");
+            resultDto.setMsg("参数为空");
         }
         return resultDto;
     }
