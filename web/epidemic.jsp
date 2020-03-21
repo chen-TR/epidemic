@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ctr
-  Date: 2020/2/25
-  Time: 14:11
-  To change this template use File | Settings | File Templates.
---%>
+<%--  Created by sibingmao  Date: 2020/2/24 15:34 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,8 +6,9 @@
     <style type="text/css">
         #container {
             height: 500px;
-            background-image: url('img/banner.png');
+            background-image: url(' img/setiaopng.png');
         }
+
     </style>
 </head>
 <body>

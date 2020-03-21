@@ -52,6 +52,14 @@ public class MybatisConfig {
         //设置数据源
         sqlSessionFactoryBean.setDataSource(dataSource);
 
+        //配置映射对象所在的包
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.ctr.epidemic.model");
+
+        //配置mybatis开启驼峰命名
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+        sqlSessionFactoryBean.setConfiguration(configuration);
+
         //配置mapper.xml解析路径
         SqlSessionFactory sqlSessionFactory = null;
         try {
@@ -61,12 +69,6 @@ public class MybatisConfig {
         }catch (Exception e){
             logger.error("解析映射xml文件时异常"+e.getMessage());
         }
-        //配置映射对象所在的包
-        sqlSessionFactoryBean.setTypeAliasesPackage("com.ctr.epidemic.model");
-        //配置mybatis开启驼峰命名
-        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        configuration.setMapUnderscoreToCamelCase(true);
-        sqlSessionFactoryBean.setConfiguration(configuration);
 
         return sqlSessionFactory;
     }

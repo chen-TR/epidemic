@@ -38,7 +38,7 @@ public class UserController {
             return "login";
         }else if(user.getPassword().equals(userInfo.getPassword())){
             //登陆成功
-            return "main";
+            return "redirect:/main.jsp";
         }
         //密码错误，登陆失败返回登录页
         model.addAttribute("msg","密码错误");
